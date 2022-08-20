@@ -1,0 +1,64 @@
+.table {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+}
+
+.column {
+  flex: 1;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.column:hover {
+  background-color: green;
+  color: white;
+}
+
+@media only screen and (max-width: 480px) {
+  .column-0 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 481px) {h1,
+  p {
+    font-family: Lato;
+  }
+  
+  .test {
+    font-weight: bold;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .test2 {
+      font-style: normal;
+      color: blue;
+    }
+  }
+  
+  @media only screen and (min-width: 481px) {
+    .test2 {
+      font-style: italic;
+      color: green;
+    }
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
+  .column-0 {
+    background-color: pink;
+  }
+}
