@@ -31,34 +31,13 @@
   }
 }
 
-@media only screen and (min-width: 481px) {h1,
-  p {
-    font-family: Lato;
-  }
-  
-  .test {
-    font-weight: bold;
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .test2 {
-      font-style: normal;
-      color: blue;
-    }
-  }
-  
-  @media only screen and (min-width: 481px) {
-    .test2 {
-      font-style: italic;
-      color: green;
-    }
-  }
-  
-  button {
-    margin: 5px;
-  }
-  
+@media only screen and (min-width: 481px) {
   .column-0 {
     background-color: pink;
   }
+}
+
+.column-selected {
+  background-color: grey;
+  color: white;
 }

@@ -9,12 +9,12 @@ export type RowItem<T> = {
   selected?: boolean;
 };
 
-type RowProps<T = {}> = {
+type RowProps<T> = {
   selectable: boolean;
   item: RowItem<T>;
 };
 
-const Row = ({ item, selectable }: RowProps) => {
+const Row = <T extends Object>({ item, selectable }: RowProps<T>) => {
   const [selected, setSelected] = useState(false);
 
   const handleOnChange = useCallback(
@@ -32,7 +32,12 @@ const Row = ({ item, selectable }: RowProps) => {
   return (
     <div className={cx('row')}>
       {Object.keys(item.value).map((key, index) => (
-        <div className={cx('column', `column-${index}`)} key={key}>
+        <div
+          className={cx('column', `column-${index}`, {
+            'column-selected': item.selected,
+          })}
+          key={key}
+        >
           {`${item.value[key]}`}
         </div>
       ))}
@@ -43,12 +48,15 @@ const Row = ({ item, selectable }: RowProps) => {
   );
 };
 
-type TableProps<T = {}> = {
+type TableProps<T> = {
   selectable: boolean;
   items: RowItem<T>[];
 };
 
-export const Table = ({ items, selectable = false }: TableProps) => {
+export const Table = <T extends Object>({
+  items,
+  selectable = false,
+}: TableProps<T>) => {
   return (
     <div className={cx('table')}>
       {items.map((item) => (

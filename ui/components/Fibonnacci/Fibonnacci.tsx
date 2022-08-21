@@ -2,7 +2,11 @@ import * as React from 'react';
 import cx from 'classnames';
 import './Fibonnacci.style.css';
 
-export const Fibonnacci = () => {
+type FibonnacciProps = {
+  interval?: number;
+};
+
+export const Fibonnacci = ({ interval = 500 }: FibonnacciProps) => {
   const [nextFibonnacci, setNextFibonnacci] = React.useState(1);
   const [currentFibonnacci, setCurrentFibonnacci] = React.useState(0);
   const [calculating, setCalculating] = React.useState(false);
@@ -25,7 +29,7 @@ export const Fibonnacci = () => {
           setCurrentFibonnacci(nextFibonnacci);
           setNextFibonnacci(next);
         }
-      }, 500);
+      }, interval);
     }
   }, [calculating, currentFibonnacci, nextFibonnacci]);
 
