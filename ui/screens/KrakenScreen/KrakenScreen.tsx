@@ -1,10 +1,12 @@
 import * as React from 'react';
-import * as CanvasJS from 'canvasjs-react-charts';
+import { CanvasJSChart } from 'canvasjs-react-charts';
 
 export const KrakenScreen = () => {
   React.useEffect(() => {
     console.log('new render');
   }, []);
 
-  return <CanvasJS.Chart></CanvasJS.Chart>;
+  console.log(CanvasJSReact);
+
+  return <CanvasJSChart></CanvasJSChart>;
 };

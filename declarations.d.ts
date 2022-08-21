@@ -1,7 +1,9 @@
-type CanvasJSReact = {};
+type DefaultCanvasJSReact = {
+  CanvasJSChart: any;
+};
 
 declare module 'canvasjs-react-charts' {
-  const CanvasJSReact: CanvasJSReact;
+  const CanvasJSReact: DefaultCanvasJSReact;
 
   export default CanvasJSReact;
 }
