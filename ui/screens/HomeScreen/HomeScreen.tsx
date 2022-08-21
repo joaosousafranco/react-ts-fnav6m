@@ -8,10 +8,19 @@ import { ToDo } from '../../../domain/models/ToDo';
 import './HomeScreen.style.css';
 import { Fibonnacci } from '../../components/Fibonnacci/Fibonnacci';
 import { AppContext, AppContextStore } from '../../app/AppContext';
+import { useFetch } from '../../hooks/useFetch';
+
+const TODOS_URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
 
 export const HomeScreen = () => {
-  const { toDos, loading } = React.useContext<AppContextStore>(AppContext);
   const [items, setItems] = useState<RowItem<ToDo>[]>([]);
+
+  const { fetching: loading, data: toDos = [] } = useFetch<ToDo[]>(
+    {
+      url: TODOS_URL,
+    },
+    []
+  );
 
   React.useEffect(() => {
     const todoItems = toDos.map((todo) => ({
@@ -20,27 +29,27 @@ export const HomeScreen = () => {
       selected: false,
     }));
     setItems(todoItems);
-  }, [toDos, loading]);
+  }, [loading]);
 
   const size = useWindowSize();
 
-  const handleOnSelectAll = () => {
+  const handleOnSelectAll = React.useCallback(() => {
     setItems(
       items.map((item) => {
         item.selected = true;
         return item;
       })
     );
-  };
+  }, [items]);
 
-  const handleOnLog = () => {
+  const handleOnLog = React.useCallback(() => {
     console.log('===============================');
     items.forEach((item) => item.selected && console.log(item.value));
     console.log('===============================');
-  };
+  }, [items]);
 
   return (
-    <div>
+    <div className={cx('home-screen')}>
       <h1>Hello StackBlitz! {new BigNumber(1.000000010000000001).toFixed()}</h1>
       <p className={cx({ test: true }, { test2: true })}>
         Start editing to see some magic happen :) {size}

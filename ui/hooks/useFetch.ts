@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+import { DependencyList, useCallback, useEffect, useState } from 'react';
 
 type FetchInput = {
   url: string;
 };
 
-export const useFetch = <T>({ url }: FetchInput, dependencies = []) => {
+export const useFetch = <T>(
+  { url }: FetchInput,
+  dependencies: DependencyList
+) => {
   const [fetching, setFetching] = useState(true);
   const [data, setData] = useState<T>(undefined);
   const [errorCode, setErrorCode] = useState(0);

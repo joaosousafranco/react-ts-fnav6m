@@ -1,9 +1,5 @@
 import { createContext } from 'react';
-import { ToDo } from '../../domain/models/ToDo';
 
-export type AppContextStore = {
-  toDos: ToDo[];
-  loading: boolean;
-};
+export type AppContextStore = {};
 
 export const AppContext = createContext<AppContextStore>(undefined);
