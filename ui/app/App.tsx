@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ToDo } from '../../domain/models/ToDo';
 import { useFetch } from '../hooks/useFetch';
 import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
-import { AppContext } from './AppContext';
+import { AppProvider } from './AppProvider';
 import ErrorBoundary from './ErrorBoundary';
 
 const TODOS_URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
@@ -18,12 +18,7 @@ const App = () => {
 
   return (
     <ErrorBoundary onError={(error) => console.log(JSON.stringify(error))}>
-      <AppContext.Provider
-        value={{
-          toDos,
-          loading,
-        }}
-      >
+      <AppProvider toDos={toDos} loading={loading}>
         {errorCode ? (
           <div>
             Failed to get data {errorCode} - {JSON.stringify(toDos)}
@@ -31,7 +26,7 @@ const App = () => {
         ) : (
           <HomeScreen />
         )}
-      </AppContext.Provider>
+      </AppProvider>
     </ErrorBoundary>
   );
 };
