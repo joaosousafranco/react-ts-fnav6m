@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { HomeScreen } from './screens/HomeScreen/HomeScreen';
+import { ToDo } from '../../domain/models/ToDo';
+import { useFetch } from '../hooks/useFetch';
+import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
 import { AppContext } from './AppContext';
-import { ToDo } from '../domain/models/ToDo';
-import { useFetch } from './hooks/useFetch';
-import ErrorBoundary from './components/ErrorBoundary';
+import ErrorBoundary from './ErrorBoundary';
 
 const TODOS_URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
 
