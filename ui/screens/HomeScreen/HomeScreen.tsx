@@ -4,10 +4,10 @@ import cx from 'classnames';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { RowItem, Table } from '../../components/Table/Table';
 import { useState } from 'react';
-import { AppContext, AppContextStore } from '../../AppContext';
 import { ToDo } from '../../../domain/models/ToDo';
 import './HomeScreen.style.css';
 import { Fibonnacci } from '../../components/Fibonnacci/Fibonnacci';
+import { AppContext, AppContextStore } from '../../app/AppContext';
 
 export const HomeScreen = () => {
   const { toDos, loading } = React.useContext<AppContextStore>(AppContext);
