@@ -13,11 +13,14 @@ const LOGO_FALLBACK_IMAGE =
   'https://seeklogo.com/images/W/web3-logo-03377DB11E-seeklogo.com.png';
 
 export const Currency = ({ currency }: CurrencyProps) => {
-  const { fiatSymbols } = React.useContext(AppContext)
+  const { fiatSymbols } = React.useContext(AppContext);
 
-  const fiatCurrencySymbol = fiatSymbols.find(
-    (e) => e.abbreviation === currency.fiat.currency
-  )?.symbol;
+  const fiatCurrencySymbol = React.useMemo(
+    () =>
+      fiatSymbols.find((e) => e.abbreviation === currency.fiat.currency)
+        ?.symbol,
+    [currency]
+  );
 
   return (
     <div key={currency.symbol} className={cx('currency')}>
