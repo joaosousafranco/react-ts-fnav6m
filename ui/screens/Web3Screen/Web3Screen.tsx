@@ -26,14 +26,6 @@ export const Web3Screen = () => {
   if (loading) {
     return <div>Loading Crypto Currencies</div>;
   }
-  const { fetching: loading, data: currencies } = useService<CryptoCurrency[]>(
-    async () => await getAddressCurrencies({ address }),
-    [address]
-  );
-
-  if (loading) {
-    return <div>Loading Crypto Currencies</div>;
-  }
 
   return (
     <div className={cx('web3Screen')}>

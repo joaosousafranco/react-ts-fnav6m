@@ -6,8 +6,6 @@ type AppProviderProps = {
   children: ReactNode;
 } & AppContextStore;
 
-export const AppProvider = ({ children, toDos, loading }: AppProviderProps) => (
-  <AppContext.Provider value={{ toDos, loading }}>
-    {children}
-  </AppContext.Provider>
+export const AppProvider = ({ children }: AppProviderProps) => (
+  <AppContext.Provider value={{}}>{children}</AppContext.Provider>
 );
