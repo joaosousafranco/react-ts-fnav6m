@@ -1,6 +1,5 @@
 import BigNumber from 'bignumber.js';
 import { CryptoCurrency } from '../models/CryptoCurrency';
-import * as HttpService from './HttpService';
 
 type CovalentBalances = {
   data: {
@@ -22,23 +21,5 @@ export const getAddressCurrencies = async ({
 }: {
   address: string;
 }): Promise<CryptoCurrency[]> => {
-  const { body, error } = await HttpService.get<CovalentBalances>({
-    url: `https://api.covalenthq.com/v1/42/address/${address}/balances_v2/?quote-currency=USD&format=JSON&nft=false&no-nft-fetch=false&key=ckey_67e96b9a39f24af5a1814748722`,
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  return (
-    body?.data?.items?.map((item) => ({
-      name: item.contract_name,
-      symbol: item.contract_ticker_symbol,
-      // Convert from WEI to Ether
-      balance: new BigNumber(item.balance)
-        .dividedBy(new BigNumber('10').pow(18))
-        .toNumber(),
-      logo: item.logo_url,
-    })) || []
-  );
+  return getAddressCurrencies({ address });
 };
