@@ -10,10 +10,9 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const { fetching: loading, data: fiatSymbols } = useService<FiatCurrencySymbol[]>(
-    () => getFiatCurrencies(),
-    []
-  )
+  const { fetching: loading, data: fiatSymbols } = useService<
+    FiatCurrencySymbol[]
+  >({ service: () => getFiatCurrencies() }, []);
 
   return (
     <AppContext.Provider value={{ loading, fiatSymbols: fiatSymbols || [] }}>

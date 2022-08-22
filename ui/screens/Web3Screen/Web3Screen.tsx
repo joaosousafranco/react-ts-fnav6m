@@ -26,20 +26,23 @@ export const Web3Screen = () => {
 
   const { fetching: loadingCurrencies, data: currencies } = useService<
     CryptoCurrency[]
-  >(() => getAddressCurrencies({ address }), [address]);
+  >({ service: () => getAddressCurrencies({ address }) }, [address]);
 
   const { fetching: loadingNFTs, data: nfts } = useService<NFTModel[]>(
-    () => getAddressNFTs({ address }),
+    { service: () => getAddressNFTs({ address }) },
     [address]
+  );
+
+  const handleOnTextChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setAddress(e.target.value);
+    },
+    []
   );
 
   return (
     <div className={cx('web3Screen')}>
-      <input
-        type="text"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-      />
+      <input type="text" value={address} onChange={handleOnTextChange} />
       <LoadingTitle title="Address Currencies" loading={loadingCurrencies} />
       {currencies?.map((currency) => (
         <Currency key={currency.symbol} currency={currency} />
