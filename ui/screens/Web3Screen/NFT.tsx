@@ -11,7 +11,7 @@ type NFTProps = {
 export const NFT = ({ nft }: NFTProps) => (
   <div className={cx('nft')}>
     <Image
-      alt={nft.description}
+      title={nft.description}
       src={nft.media[0]}
       fallbackImage={nft.media[1]}
     />
