@@ -12,6 +12,7 @@ const INITIAL_ADDRESS = '0xa49e906f1D52E1c215616f529490F232E22492bA';
 
 // Some useful addresses
 // 0x00000000219ab540356cBB839Cbe05303d7705Fa
+// 0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b
 
 export const Web3Screen = () => {
   const { loading: appLoading } = React.useContext(AppContext);

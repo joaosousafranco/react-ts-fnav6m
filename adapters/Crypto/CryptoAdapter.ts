@@ -1,4 +1,5 @@
 import { CryptoCurrency } from '../../domain/models/CryptoCurrency';
+import { CurrencyProvider } from '../Crypto/providers/CryptoProvider';
 import { getCryptoProvider } from '../Crypto/providers/CryptoProviderFactory';
 
 export const getAddressCurrencies = async ({
@@ -6,7 +7,9 @@ export const getAddressCurrencies = async ({
 }: {
   address: string;
 }): Promise<CryptoCurrency[]> => {
-  return getCryptoProvider({ provider: 'covalent' }).getAddressCurrencies({
-    address,
+  const provider = getCryptoProvider({
+    provider: 'covalent',
   });
+
+  return provider.getAddressCurrencies({ address });
 };
