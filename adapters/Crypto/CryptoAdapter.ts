@@ -1,15 +1,30 @@
 import { CryptoCurrency } from '../../domain/models/CryptoCurrency';
-import { CurrencyProvider } from '../Crypto/providers/CryptoProvider';
-import { getCryptoProvider } from '../Crypto/providers/CryptoProviderFactory';
+import { NFT } from '../../domain/models/NFT';
+import {
+  getCurrencyProvider,
+  getNFTProvider,
+} from '../Crypto/providers/CryptoProviderFactory';
 
 export const getAddressCurrencies = async ({
   address,
 }: {
   address: string;
 }): Promise<CryptoCurrency[]> => {
-  const provider = getCryptoProvider({
+  const provider = getCurrencyProvider({
     provider: 'covalent',
   });
 
   return provider.getAddressCurrencies({ address });
+};
+
+export const getAddressNFTs = async ({
+  address,
+}: {
+  address: string;
+}): Promise<NFT[]> => {
+  const provider = getNFTProvider({
+    provider: 'alchemy',
+  });
+
+  return provider.getAddressNFTs({ address });
 };

@@ -3,11 +3,18 @@ import { CryptoCurrency } from '../../../domain/models/CryptoCurrency';
 import cx from 'classnames';
 import './Web3Screen.style';
 import { useService } from '../../hooks/useService';
-import { getAddressCurrencies } from '../../../domain/services/CryptoService';
+import {
+  getAddressCurrencies,
+  getAddressNFTs,
+} from '../../../domain/services/CryptoService';
 import { Currency } from '../Web3Screen/Currency';
 import { AppContext } from '../../app/AppContext';
+import { NFT } from '../Web3Screen/NFT';
+import { NFT as NFTModel } from '../../../domain/models/NFT';
+import { LoadingTitle } from '../../components/LoadingTitle/LoadingTitle';
 
-const INITIAL_ADDRESS = '0xa49e906f1D52E1c215616f529490F232E22492bA';
+const INITIAL_ADDRESS = '0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b';
+// Address: 0xa49e906f1D52E1c215616f529490F232E22492bA
 // Private Key: 36e8e50c25bb1ce42977f227ad992f23afce8d3f2385018f7c73ec3ba2b576e8
 
 // Some useful addresses
@@ -15,17 +22,16 @@ const INITIAL_ADDRESS = '0xa49e906f1D52E1c215616f529490F232E22492bA';
 // 0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b
 
 export const Web3Screen = () => {
-  const { loading: appLoading } = React.useContext(AppContext);
   const [address, setAddress] = React.useState(INITIAL_ADDRESS);
 
-  const { fetching: loading, data: currencies } = useService<CryptoCurrency[]>(
-    () => getAddressCurrencies({ address }),
+  const { fetching: loadingCurrencies, data: currencies } = useService<
+    CryptoCurrency[]
+  >(() => getAddressCurrencies({ address }), [address]);
+
+  const { fetching: loadingNFTs, data: nfts } = useService<NFTModel[]>(
+    () => getAddressNFTs({ address }),
     [address]
   );
-
-  if (loading || appLoading) {
-    return <div>Loading Crypto Currencies</div>;
-  }
 
   return (
     <div className={cx('web3Screen')}>
@@ -34,10 +40,16 @@ export const Web3Screen = () => {
         value={address}
         onChange={(e) => setAddress(e.target.value)}
       />
-      <h1>Address Currencies</h1>
-      {currencies.map((currency) => (
+      <LoadingTitle title="Address Currencies" loading={loadingCurrencies} />
+      {currencies?.map((currency) => (
         <Currency key={currency.symbol} currency={currency} />
       ))}
+      <LoadingTitle title="Address NFTs" loading={loadingNFTs} />
+      <div className={cx('nfts')}>
+        {nfts?.map((nft) => (
+          <NFT nft={nft} />
+        ))}
+      </div>
     </div>
   );
 };

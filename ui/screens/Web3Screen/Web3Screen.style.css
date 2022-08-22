@@ -11,3 +11,10 @@
 .web3Screen input {
   margin: 5px 0px;
 }
+
+.web3Screen .nfts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+

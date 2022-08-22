@@ -17,7 +17,7 @@ export const Currency = ({ currency }: CurrencyProps) => {
 
   const fiatCurrencySymbol = React.useMemo(
     () =>
-      fiatSymbols.find((e) => e.abbreviation === currency.fiat.currency)
+      fiatSymbols?.find((e) => e.abbreviation === currency.fiat.currency)
         ?.symbol,
     [currency]
   );

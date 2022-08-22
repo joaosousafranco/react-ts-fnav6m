@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { CryptoCurrency } from '../../../domain/models/CryptoCurrency';
-import { CryptoProvider } from '../../Crypto/providers/CryptoProvider';
+import { CurrencyProvider } from '../../Crypto/providers/CryptoProvider';
 import * as HttpAdapter from '../../HttpAdapter';
 
 type CovalentBalances = {
@@ -24,7 +24,7 @@ enum NETWORKS {
   GOERLI = 42,
 }
 
-export class Covalent implements CryptoProvider {
+export class Covalent implements CurrencyProvider {
   public async getAddressCurrencies({
     address,
   }: {
