@@ -2,10 +2,8 @@ import * as React from 'react';
 import { CryptoCurrency } from '../../../domain/models/CryptoCurrency';
 import cx from 'classnames';
 import './Web3Screen.style';
-import { Image } from '../../components/Image';
 import { useService } from '../../hooks/useService';
 import { getAddressCurrencies } from '../../../domain/services/CryptoService';
-import { useFetch } from '../../hooks/useFetch';
 import { Currency } from '../Web3Screen/Currency';
 
 const INITIAL_ADDRESS = '0xa49e906f1D52E1c215616f529490F232E22492bA';
