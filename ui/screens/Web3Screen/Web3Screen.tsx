@@ -19,7 +19,15 @@ export const Web3Screen = () => {
   );
 
   const { fetching: loading, data: currencies } = useService<CryptoCurrency[]>(
-    async () => getAddressCurrencies({ address }),
+    async () => await getAddressCurrencies({ address }),
+    [address]
+  );
+
+  if (loading) {
+    return <div>Loading Crypto Currencies</div>;
+  }
+  const { fetching: loading, data: currencies } = useService<CryptoCurrency[]>(
+    async () => await getAddressCurrencies({ address }),
     [address]
   );
 
