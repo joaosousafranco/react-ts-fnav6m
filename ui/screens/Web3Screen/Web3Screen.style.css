@@ -1,0 +1,11 @@
+.web3Screen {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border-color: black;
+  border-width: 1px;
+}
+
+.web3Screen img {
+  width: 100px;
+}
