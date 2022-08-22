@@ -5,8 +5,6 @@ import { getFiatCurrencies } from '../../domain/services/FiatService';
 import { useService } from '../hooks/useService';
 import { AppContext } from './AppContext';
 
-
-
 type AppProviderProps = {
   children: ReactNode;
 };
