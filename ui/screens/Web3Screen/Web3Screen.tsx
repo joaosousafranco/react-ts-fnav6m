@@ -7,24 +7,21 @@ import BigNumber from 'bignumber.js';
 import { Image } from '../../components/Image';
 import { useService } from '../../hooks/useService';
 import { getAddressCurrencies } from '../../../domain/services/CryptoService';
-
 // 0xa49e906f1D52E1c215616f529490F232E22492bA
 // 36e8e50c25bb1ce42977f227ad992f23afce8d3f2385018f7c73ec3ba2b576e8
 
 // Covalent API Key: ckey_67e96b9a39f24af5a1814748722
 // https://api.covalenthq.com/v1/42/address/0xa49e906f1D52E1c215616f529490F232E22492bA/balances_v2/?quote-currency=USD&format=JSON&nft=false&no-nft-fetch=false&key=ckey_67e96b9a39f24af5a1814748722
 
-
 export const Web3Screen = () => {
   const [address, setAddress] = React.useState(
     '0xa49e906f1D52E1c215616f529490F232E22492bA'
   );
 
-  const { fetching: loading, data: currencies } = useService({
-    service: getAddressCurrencies,
-    serviceOptions: { address }
-  }, [address])
-
+  const { fetching: loading, data: currencies } = useService<CryptoCurrency[]>(
+    async () => getAddressCurrencies({ address }),
+    [address]
+  );
 
   if (loading) {
     return <div>Loading Crypto Currencies</div>;

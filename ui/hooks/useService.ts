@@ -1,17 +1,14 @@
 import { DependencyList, useCallback, useEffect, useState } from 'react';
 
 export const useService = <T>(
-  {
-    service,
-    serviceOptions,
-  }: { service: (...options: any) => T; serviceOptions: any },
+  service: () => T,
   dependencies: DependencyList
 ) => {
   const [fetching, setFetching] = useState(true);
   const [data, setData] = useState<T>();
 
   const getData = useCallback(async () => {
-    const serviceData = await service(serviceOptions);
+    const serviceData = await service();
     setData(serviceData);
     setFetching(false);
   }, dependencies);
