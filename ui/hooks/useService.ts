@@ -8,6 +8,7 @@ export const useService = <T>(
   const [data, setData] = useState<T>();
 
   const getData = useCallback(async () => {
+    setFetching(true);
     const serviceData = await service();
     setData(serviceData);
     setFetching(false);

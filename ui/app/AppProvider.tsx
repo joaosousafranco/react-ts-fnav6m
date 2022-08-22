@@ -12,9 +12,10 @@ type AppProviderProps = {
 } & AppContextStore;
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const { fetching: loading, data: fiatSymbols } = useFetch<
-    FiatCurrencySymbol[]
-  >({ url: CURRENCIES_SYMBOLS_URL }, []);
+  const { data: fiatSymbols } = useFetch<FiatCurrencySymbol[]>(
+    { url: CURRENCIES_SYMBOLS_URL },
+    []
+  );
 
   return (
     <AppContext.Provider value={{ fiatSymbols: fiatSymbols || [] }}>
