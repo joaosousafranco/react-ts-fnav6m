@@ -2,8 +2,6 @@ import { NFT } from '../../../domain/models/NFT';
 import { NFTProvider } from '../../Crypto/providers/CryptoProvider';
 import * as HttpAdapter from '../../HttpAdapter';
 
-// https://eth-goerli.alchemyapi.io/v2/6uKGpq0GacvO_Zv07PIDNjdKAeUuAJY0/getNFTs?owner=0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b
-
 type AlchemyNFTList = {
   totalCount: number;
   ownedNfts: {
@@ -14,10 +12,12 @@ type AlchemyNFTList = {
   }[];
 };
 
+const API_KEY = 'HBz1o0OVpF0qAaek-2jGJf3JWoi7Jrql';
+
 export class Alchemy implements NFTProvider {
   public async getAddressNFTs({ address }: { address: any }): Promise<NFT[]> {
     const { body, error } = await HttpAdapter.get<AlchemyNFTList>({
-      url: `https://eth-goerli.alchemyapi.io/v2/6uKGpq0GacvO_Zv07PIDNjdKAeUuAJY0/getNFTs?owner=${address}`,
+      url: `https://eth-goerli.alchemyapi.io/v2/${API_KEY}/getNFTs?owner=${address}`,
     });
 
     if (error) {

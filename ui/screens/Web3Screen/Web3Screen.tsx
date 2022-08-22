@@ -8,7 +8,6 @@ import {
   getAddressNFTs,
 } from '../../../domain/services/CryptoService';
 import { Currency } from '../Web3Screen/Currency';
-import { AppContext } from '../../app/AppContext';
 import { NFT } from '../Web3Screen/NFT';
 import { NFT as NFTModel } from '../../../domain/models/NFT';
 import { LoadingTitle } from '../../components/LoadingTitle/LoadingTitle';
@@ -44,13 +43,13 @@ export const Web3Screen = () => {
     <div className={cx('web3Screen')}>
       <input type="text" value={address} onChange={handleOnTextChange} />
       <LoadingTitle title="Address Currencies" loading={loadingCurrencies} />
-      {currencies?.map((currency) => (
-        <Currency key={currency.symbol} currency={currency} />
+      {currencies?.map((currency, index) => (
+        <Currency key={index} currency={currency} />
       ))}
       <LoadingTitle title="Address NFTs" loading={loadingNFTs} />
       <div className={cx('nfts')}>
-        {nfts?.map((nft) => (
-          <NFT nft={nft} />
+        {nfts?.map((nft, index) => (
+          <NFT key={index} nft={nft} />
         ))}
       </div>
     </div>

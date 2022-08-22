@@ -16,7 +16,7 @@ export const useService = <T>(
   const getData = useCallback(async () => {
     setFetching(true);
 
-    if (staleData) {
+    if (!staleData) {
       setData(undefined);
     }
 
