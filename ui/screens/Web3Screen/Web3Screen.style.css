@@ -1,11 +1,22 @@
-.web3Screen {
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  border-color: black;
-  border-width: 1px;
+.web3Screen input {
+  width: 100%;
 }
 
-.web3Screen img {
-  width: 100px;
+.currency {
+  display: flex;
+  align-items: center;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  padding: 5px;
+}
+
+.logo {
+  margin-right: 5px;
+  text-align: center;
+  width: 50px;
+}
+
+.currency img {
+  width: 50px;
 }
