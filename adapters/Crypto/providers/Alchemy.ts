@@ -16,7 +16,7 @@ const API_KEY = 'HBz1o0OVpF0qAaek-2jGJf3JWoi7Jrql';
 
 export class Alchemy implements NFTProvider {
   public async getAddressNFTs({ address }: { address: any }): Promise<NFT[]> {
-    const { body, error } = await HttpAdapter.get<AlchemyNFTList>({
+    const { body, error, statusCode } = await HttpAdapter.get<AlchemyNFTList>({
       url: `https://eth-goerli.alchemyapi.io/v2/${API_KEY}/getNFTs?owner=${address}`,
     });
 

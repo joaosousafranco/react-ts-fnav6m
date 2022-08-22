@@ -20,9 +20,12 @@ export const useService = <T>(
       setData(undefined);
     }
 
-    const serviceData = await service();
-    setData(serviceData);
-    setFetching(false);
+    try {
+      const serviceData = await service();
+      setData(serviceData);
+    } finally {
+      setFetching(false);
+    }
   }, dependencies);
 
   useEffect(() => {
