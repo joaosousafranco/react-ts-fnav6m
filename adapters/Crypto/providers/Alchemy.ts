@@ -24,15 +24,17 @@ export class Alchemy implements NFTProvider {
       throw error;
     }
 
-    return body.ownedNfts.map(({ title, description, balance, media }) => ({
-      title,
-      description,
-      balance,
-      media: media.reduce(
-        (previous, current) =>
-          previous.concat(...Object.keys(current).map((key) => current[key])),
-        []
-      ),
-    }));
+    return (
+      body.ownedNfts.map(({ title, description, balance, media }) => ({
+        title,
+        description,
+        balance,
+        media: media.reduce(
+          (previous, current) =>
+            previous.concat(...Object.keys(current).map((key) => current[key])),
+          []
+        ),
+      })) || []
+    );
   }
 }
