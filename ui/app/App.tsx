@@ -12,7 +12,10 @@ const App = () => {
         <Navigator />
         <div className={cx('footer')}>
           <div>Code at:</div>
-          <a href="https://github.com/joaosousafranco/react-ts-fnav6m">
+          <a
+            href="https://github.com/joaosousafranco/react-ts-fnav6m"
+            target="_blank"
+          >
             https://github.com/joaosousafranco/react-ts-fnav6m
           </a>
         </div>
