@@ -13,7 +13,7 @@ footer {
   border: 1px solid black;
   margin-top: 15px;
   padding: 5px;
-  background-color: white;
+  background-color: #ddd;
 
   position: sticky;
   bottom: 0;
