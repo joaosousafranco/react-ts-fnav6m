@@ -1,4 +1,7 @@
-import { CryptoChain } from '../../../domain/models/CryptoNetwork';
+import {
+  CryptoChain,
+  CryptoNetwork,
+} from '../../../domain/models/CryptoNetwork';
 import { Alchemy } from '../../Crypto/providers/Alchemy';
 import { Covalent } from '../../Crypto/providers/Covalent';
 import {
@@ -6,6 +9,31 @@ import {
   NFTProvider,
 } from '../../Crypto/providers/CryptoProvider';
 import { MempoolSpace } from '../../Crypto/providers/MempoolSpace';
+
+export const supportedNetworks: CryptoNetwork[] = [
+  {
+    id: '1',
+    name: 'eth-mainnet',
+    description: 'ETH Mainnet',
+    chain: CryptoChain.ETH,
+  },
+  {
+    id: '42',
+    name: 'eth-goerli',
+    description: 'ETH Goerli',
+    chain: CryptoChain.ETH,
+  },
+  {
+    name: 'btc-mainnet',
+    description: 'BTC Mainnet',
+    chain: CryptoChain.BTC,
+  },
+  {
+    name: 'btc-testnet',
+    description: 'BTC Testnet',
+    chain: CryptoChain.BTC,
+  },
+];
 
 export const getNFTProvider = (): NFTProvider => {
   return new Alchemy();
