@@ -8,8 +8,14 @@
   font-size: larger;
 }
 
-.web3Screen input {
+.web3Screen .input {
+  display: flex;
   margin: 5px 0px;
+}
+
+.web3Screen .input input {
+  flex-grow: 1;
+  margin-right: 5px;
 }
 
 .web3Screen .nfts {
@@ -17,4 +23,3 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-

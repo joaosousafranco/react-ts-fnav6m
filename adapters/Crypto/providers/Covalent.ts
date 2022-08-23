@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { CryptoCurrency } from '../../../domain/models/CryptoCurrency';
+import { CryptoNetwork } from '../../../domain/models/CryptoNetwork';
 import { CurrencyProvider } from '../../Crypto/providers/CryptoProvider';
 import * as HttpAdapter from '../../HttpAdapter';
 
@@ -19,19 +20,16 @@ type CovalentBalances = {
   };
 };
 
-enum NETWORKS {
-  MAINNET = 1,
-  GOERLI = 42,
-}
-
 export class Covalent implements CurrencyProvider {
   public async getAddressCurrencies({
     address,
+    network,
   }: {
-    address: any;
+    address: string;
+    network: CryptoNetwork;
   }): Promise<CryptoCurrency[]> {
     const { body, error } = await HttpAdapter.get<CovalentBalances>({
-      url: `https://api.covalenthq.com/v1/${NETWORKS.GOERLI}/address/${address}/balances_v2/?quote-currency=USD&format=JSON&nft=false&no-nft-fetch=false&key=ckey_67e96b9a39f24af5a1814748722`,
+      url: `https://api.covalenthq.com/v1/${network.id}/address/${address}/balances_v2/?quote-currency=USD&format=JSON&nft=false&no-nft-fetch=false&key=ckey_67e96b9a39f24af5a1814748722`,
     });
 
     if (error) {

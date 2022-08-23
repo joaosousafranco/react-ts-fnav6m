@@ -1,3 +1,4 @@
+import { CryptoNetwork } from '../../../domain/models/CryptoNetwork';
 import { NFT } from '../../../domain/models/NFT';
 import { NFTProvider } from '../../Crypto/providers/CryptoProvider';
 import * as HttpAdapter from '../../HttpAdapter';
@@ -14,15 +15,16 @@ type AlchemyNFTList = {
 
 const API_KEY = 'HBz1o0OVpF0qAaek-2jGJf3JWoi7Jrql';
 
-enum NETWORKS {
-  MAINNET = 'eth-mainnet',
-  GOERLI = 'eth-goerli',
-}
-
 export class Alchemy implements NFTProvider {
-  public async getAddressNFTs({ address }: { address: any }): Promise<NFT[]> {
+  public async getAddressNFTs({
+    address,
+    network,
+  }: {
+    address: string;
+    network: CryptoNetwork;
+  }): Promise<NFT[]> {
     const { body, error } = await HttpAdapter.get<AlchemyNFTList>({
-      url: `https://${NETWORKS.GOERLI}.alchemyapi.io/v2/${API_KEY}/getNFTs?owner=${address}`,
+      url: `https://${network.name}.alchemyapi.io/v2/${API_KEY}/getNFTs?owner=${address}`,
     });
 
     if (error) {

@@ -1,10 +1,17 @@
 import { CryptoCurrency } from '../../../domain/models/CryptoCurrency';
+import { CryptoNetwork } from '../../../domain/models/CryptoNetwork';
 import { NFT } from '../../../domain/models/NFT';
 
 export interface NFTProvider {
-  getAddressNFTs({ address: string }): Promise<NFT[]>;
+  getAddressNFTs(options: {
+    address: string;
+    network: CryptoNetwork;
+  }): Promise<NFT[]>;
 }
 
 export interface CurrencyProvider {
-  getAddressCurrencies({ address: string }): Promise<CryptoCurrency[]>;
+  getAddressCurrencies(options: {
+    address: string;
+    network: CryptoNetwork;
+  }): Promise<CryptoCurrency[]>;
 }
