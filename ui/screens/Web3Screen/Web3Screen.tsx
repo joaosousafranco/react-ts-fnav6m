@@ -50,7 +50,7 @@ export const Web3Screen = () => {
           network: supportedNetworks[selectedNetwork],
         }),
     },
-    [address]
+    [address, selectedNetwork]
   );
 
   const handleOnTextChange = React.useCallback(
