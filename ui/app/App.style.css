@@ -8,7 +8,7 @@ body {
   font-family: Lato;
 }
 
-.footer {
+footer {
   display: flex;
   border: 1px solid black;
   margin-top: 15px;
@@ -20,7 +20,7 @@ body {
   left: 0;
 }
 
-.footer a {
+footer a {
   margin-left: 5px;
   text-decoration: none;
   color: black;

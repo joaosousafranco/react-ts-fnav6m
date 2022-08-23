@@ -17,6 +17,14 @@ const supportedNetworks: CryptoNetwork[] = [
     name: 'eth-goerli',
     description: 'ETH Goerli',
   },
+  {
+    name: 'btc-mainnet',
+    description: 'BTC Mainnet',
+  },
+  {
+    name: 'btc-testnet',
+    description: 'BTC Testnet',
+  },
 ];
 
 export const getAddressCurrencies = async ({

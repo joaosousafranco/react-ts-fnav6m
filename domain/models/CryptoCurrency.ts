@@ -8,5 +8,5 @@ export type CryptoCurrency = {
   symbol: string;
   balance: string;
   logo: string;
-  fiat: Fiat;
+  fiat?: Fiat;
 };

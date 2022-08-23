@@ -18,9 +18,18 @@ const INITIAL_ADDRESS = '0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b';
 // Address: 0xa49e906f1D52E1c215616f529490F232E22492bA
 // Private Key: 36e8e50c25bb1ce42977f227ad992f23afce8d3f2385018f7c73ec3ba2b576e8
 
-// Some useful addresses
+// Some useful ethereum addresses
 // 0x00000000219ab540356cBB839Cbe05303d7705Fa
 // 0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b
+// 0xe4605d46fd0b3f8329d936a8b258d69276cba264
+// 0xE603eB00619E81d8b4954be13B59D7B6A2DC2B75
+
+// Some useful bitcoin addresses
+// mrPnD3hrbJZCMyr2bxoRoumitXLSNvj23V - testnet
+// 1AJPvVswhkF1xTmyojgHsioSompZAw1YGf - mainnet
+
+// https://blockchain.info/rawaddr/1AJPvVswhkF1xTmyojgHsioSompZAw1YGf - BTC mainnet
+// https://mempool.space/testnet/api/address/mrPnD3hrbJZCMyr2bxoRoumitXLSNvj23V - BTC testnet
 
 export const Web3Screen = () => {
   const [inputValue, setInputValue] = React.useState(INITIAL_ADDRESS);
@@ -65,7 +74,7 @@ export const Web3Screen = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setAddress(e.target.value);
     },
-    200
+    500
   );
 
   return (

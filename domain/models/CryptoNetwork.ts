@@ -1,5 +1,5 @@
 export type CryptoNetwork = {
-  id: string;
+  id?: string;
   name?: string;
   description?: string;
 };
