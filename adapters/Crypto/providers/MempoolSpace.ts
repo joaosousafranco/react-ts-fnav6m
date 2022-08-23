@@ -4,8 +4,6 @@ import { CryptoNetwork } from '../../../domain/models/CryptoNetwork';
 import { CurrencyProvider } from '../../Crypto/providers/CryptoProvider';
 import * as HttpAdapter from '../../HttpAdapter';
 
-// 100000000
-
 const BTC_LOGO = 'https://bitcoin.org/img/icons/opengraph.png?1660986466';
 
 type MempoolSpaceBalance = {
@@ -23,8 +21,10 @@ export class MempoolSpace implements CurrencyProvider {
     address: string;
     network: CryptoNetwork;
   }): Promise<CryptoCurrency[]> {
+    const networkName = network.name === 'btc-testnet' ? 'testnet/' : '';
+
     const { body, error } = await HttpAdapter.get<MempoolSpaceBalance>({
-      url: `https://mempool.space/testnet/api/address/${address}`,
+      url: `https://mempool.space/${networkName}api/address/${address}`,
     });
 
     if (error) {

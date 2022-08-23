@@ -4,8 +4,9 @@ import {
   CurrencyProvider,
   NFTProvider,
 } from '../../Crypto/providers/CryptoProvider';
+import { MempoolSpace } from '../../Crypto/providers/MempoolSpace';
 
-export type SupportedProviders = 'covalent' | 'alchemy';
+export type SupportedProviders = 'covalent' | 'alchemy' | 'mempoolspace';
 
 export const getNFTProvider = ({
   provider,
@@ -28,6 +29,8 @@ export const getCurrencyProvider = ({
   switch (provider) {
     case 'covalent':
       return new Covalent();
+    case 'mempoolspace':
+      return new MempoolSpace();
     default:
       throw new Error(
         `Crypto currency provider ${provider} implementation does not exist`

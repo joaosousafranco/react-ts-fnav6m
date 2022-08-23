@@ -76,6 +76,7 @@ export const Web3Screen = () => {
     },
     500
   );
+  console.log(address, currencies);
 
   return (
     <div className={cx('web3Screen')}>

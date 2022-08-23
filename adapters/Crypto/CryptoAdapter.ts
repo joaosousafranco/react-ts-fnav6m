@@ -34,8 +34,12 @@ export const getAddressCurrencies = async ({
   address: string;
   network: CryptoNetwork;
 }): Promise<CryptoCurrency[]> => {
+  const cryptoProvider = network.name.startsWith('btc-')
+    ? 'mempoolspace'
+    : 'covalent';
+
   const provider = getCurrencyProvider({
-    provider: 'covalent',
+    provider: cryptoProvider,
   });
 
   return provider.getAddressCurrencies({ address, network });

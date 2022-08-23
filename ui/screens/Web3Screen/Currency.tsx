@@ -15,6 +15,10 @@ const LOGO_FALLBACK_IMAGE =
 export const Currency = ({ currency }: CurrencyProps) => {
   const { fiatSymbols } = React.useContext(AppContext);
 
+  if (!currency) {
+    return null;
+  }
+
   const fiatCurrencySymbol = React.useMemo(
     () =>
       fiatSymbols?.find((e) => e.abbreviation === currency.fiat.currency)
