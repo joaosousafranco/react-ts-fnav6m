@@ -78,9 +78,12 @@ export const Web3Screen = () => {
     <div className={cx('web3Screen')}>
       <div className={cx('input')}>
         <input type="text" value={inputValue} onChange={handleOnTextChange} />
-        <select onChange={(e) => setSelectedNetwork(+e.target.value)}>
+        <select
+          onChange={(e) => setSelectedNetwork(+e.target.value)}
+          defaultValue={selectedNetwork}
+        >
           {supportedNetworks.map((network, index) => (
-            <option selected={selectedNetwork === index} value={index}>
+            <option key={index} value={index}>
               {network.description}
             </option>
           ))}
