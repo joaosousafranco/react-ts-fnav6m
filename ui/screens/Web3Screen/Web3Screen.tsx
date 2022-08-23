@@ -28,9 +28,6 @@ const INITIAL_ADDRESS = '0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b';
 // mrPnD3hrbJZCMyr2bxoRoumitXLSNvj23V - testnet
 // 1AJPvVswhkF1xTmyojgHsioSompZAw1YGf - mainnet
 
-// https://blockchain.info/rawaddr/1AJPvVswhkF1xTmyojgHsioSompZAw1YGf - BTC mainnet
-// https://mempool.space/testnet/api/address/mrPnD3hrbJZCMyr2bxoRoumitXLSNvj23V - BTC testnet
-
 export const Web3Screen = () => {
   const [inputValue, setInputValue] = React.useState(INITIAL_ADDRESS);
   const [address, setAddress] = React.useState(INITIAL_ADDRESS);
@@ -76,7 +73,6 @@ export const Web3Screen = () => {
     },
     500
   );
-  console.log(address, currencies);
 
   return (
     <div className={cx('web3Screen')}>

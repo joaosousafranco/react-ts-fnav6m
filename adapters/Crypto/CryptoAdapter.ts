@@ -1,5 +1,5 @@
 import { CryptoCurrency } from '../../domain/models/CryptoCurrency';
-import { CryptoNetwork } from '../../domain/models/CryptoNetwork';
+import { CryptoChain, CryptoNetwork } from '../../domain/models/CryptoNetwork';
 import { NFT } from '../../domain/models/NFT';
 import {
   getCurrencyProvider,
@@ -11,19 +11,23 @@ const supportedNetworks: CryptoNetwork[] = [
     id: '1',
     name: 'eth-mainnet',
     description: 'ETH Mainnet',
+    chain: CryptoChain.ETH,
   },
   {
     id: '42',
     name: 'eth-goerli',
     description: 'ETH Goerli',
+    chain: CryptoChain.ETH,
   },
   {
     name: 'btc-mainnet',
     description: 'BTC Mainnet',
+    chain: CryptoChain.BTC,
   },
   {
     name: 'btc-testnet',
     description: 'BTC Testnet',
+    chain: CryptoChain.BTC,
   },
 ];
 
@@ -34,9 +38,8 @@ export const getAddressCurrencies = async ({
   address: string;
   network: CryptoNetwork;
 }): Promise<CryptoCurrency[]> => {
-  const cryptoProvider = network.name.startsWith('btc-')
-    ? 'mempoolspace'
-    : 'covalent';
+  const cryptoProvider =
+    network.chain === CryptoChain.BTC ? 'mempoolspace' : 'covalent';
 
   const provider = getCurrencyProvider({
     provider: cryptoProvider,

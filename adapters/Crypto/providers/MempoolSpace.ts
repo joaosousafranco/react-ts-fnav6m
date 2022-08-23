@@ -13,6 +13,11 @@ type MempoolSpaceBalance = {
   };
 };
 
+const NETWORKS_BASE_URL_MAP = {
+  'btc-testnet': 'https://mempool.space/testnet',
+  'btc-mainnet': 'https://mempool.space',
+};
+
 export class MempoolSpace implements CurrencyProvider {
   public async getAddressCurrencies({
     address,
@@ -21,10 +26,8 @@ export class MempoolSpace implements CurrencyProvider {
     address: string;
     network: CryptoNetwork;
   }): Promise<CryptoCurrency[]> {
-    const networkName = network.name === 'btc-testnet' ? 'testnet/' : '';
-
     const { body, error } = await HttpAdapter.get<MempoolSpaceBalance>({
-      url: `https://mempool.space/${networkName}api/address/${address}`,
+      url: `${NETWORKS_BASE_URL_MAP[network.name]}/api/address/${address}`,
     });
 
     if (error) {
