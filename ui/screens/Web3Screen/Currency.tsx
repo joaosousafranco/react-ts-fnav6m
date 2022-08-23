@@ -18,11 +18,11 @@ export const Currency = ({ currency }: CurrencyProps) => (
     <div className={cx('logo')}>
       <Image src={currency.logo} fallbackImage={LOGO_FALLBACK_IMAGE} />
     </div>
-    <div className={cx('description')}>
-      {currency.symbol} - {currency.name}
-    </div>
+    <div className={cx('description')}>{currency.name}</div>
     <div className={cx('value')}>
-      <div>{currency.balance}</div>
+      <div>
+        {currency.balance} {currency.symbol}
+      </div>
       {currency.fiat && <Fiat currency={currency} />}
     </div>
   </div>
