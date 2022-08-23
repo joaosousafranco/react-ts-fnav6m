@@ -7,29 +7,28 @@ import { useState } from 'react';
 import { ToDo } from '../../../domain/models/ToDo';
 import './HomeScreen.style.css';
 import { Fibonnacci } from '../../components/Fibonnacci/Fibonnacci';
-import { AppContext, AppContextStore } from '../../app/AppContext';
 import { useFetch } from '../../hooks/useFetch';
-
-const TODOS_URL = 'https://jsonplaceholder.typicode.com/users/1/todos';
+import { useService } from '../../hooks/useService';
+import { getToDos } from '../../../domain/services/TodoService';
 
 export const HomeScreen = () => {
   const [items, setItems] = useState<RowItem<ToDo>[]>([]);
 
-  const { fetching: loading, data: toDos = [] } = useFetch<ToDo[]>(
+  const { fetching: loading, data: toDos } = useService<ToDo[]>(
     {
-      url: TODOS_URL,
+      service: () => getToDos(),
     },
     []
   );
 
   React.useEffect(() => {
-    const todoItems = toDos.map((todo) => ({
+    const todoItems = toDos?.map((todo) => ({
       value: todo,
       key: todo.id,
       selected: false,
     }));
     setItems(todoItems);
-  }, [loading]);
+  }, [toDos]);
 
   const size = useWindowSize();
 
