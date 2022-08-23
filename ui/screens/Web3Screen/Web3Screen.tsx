@@ -11,7 +11,6 @@ import { Currency } from '../Web3Screen/Currency';
 import { NFT } from '../Web3Screen/NFT';
 import { NFT as NFTModel } from '../../../domain/models/NFT';
 import { LoadingTitle } from '../../components/LoadingTitle/LoadingTitle';
-import { debounce } from '../../../domain/services/DebounceService';
 import { useDebounce } from '../../hooks/useDebounce';
 
 const INITIAL_ADDRESS = '0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b';

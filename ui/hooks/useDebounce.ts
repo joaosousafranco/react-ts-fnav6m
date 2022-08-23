@@ -1,11 +1,22 @@
 import { useMemo } from 'react';
-import { debounce } from '../../domain/services/DebounceService';
+
+export const debounce = <T extends unknown[]>(
+  action: (...args: T) => void,
+  delay: number
+) => {
+  let timeoutId = null;
+
+  return (...args: T) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      action.apply(null, args);
+    }, delay);
+  };
+};
 
 export const useDebounce = <T extends unknown[]>(
   action: (...args: T) => void,
   delay: number
 ) => {
-  const memoizedDebounce = useMemo(() => debounce(action, delay), []);
-
-  return memoizedDebounce;
+  return useMemo(() => debounce(action, delay), []);
 };
