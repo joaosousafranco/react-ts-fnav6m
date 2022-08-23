@@ -11,11 +11,9 @@ export const Navigator = () => (
   <BrowserRouter>
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/kraken">Kraken</Link>
       <Link to="/web3">Web3</Link>
     </nav>
     <Routes>
-      <Route path="/kraken" element={<KrakenScreen />} />
       <Route path="/web3" element={<Web3Screen />} />
       <Route path="*" element={<HomeScreen />} />
     </Routes>

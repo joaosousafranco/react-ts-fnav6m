@@ -14,7 +14,7 @@ import { getToDos } from '../../../domain/services/TodoService';
 export const HomeScreen = () => {
   const [items, setItems] = useState<RowItem<ToDo>[]>([]);
 
-  const { fetching: loading, data: toDos } = useService<ToDo[]>(
+  const { fetching: loading, data: toDos = [] } = useService<ToDo[]>(
     {
       service: () => getToDos(),
     },
@@ -22,13 +22,13 @@ export const HomeScreen = () => {
   );
 
   React.useEffect(() => {
-    const todoItems = toDos?.map((todo) => ({
+    const todoItems = toDos.map((todo) => ({
       value: todo,
       key: todo.id,
       selected: false,
     }));
     setItems(todoItems);
-  }, [toDos]);
+  }, [loading]);
 
   const size = useWindowSize();
 
