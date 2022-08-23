@@ -38,11 +38,8 @@ export const getAddressCurrencies = async ({
   address: string;
   network: CryptoNetwork;
 }): Promise<CryptoCurrency[]> => {
-  const cryptoProvider =
-    network.chain === CryptoChain.BTC ? 'mempoolspace' : 'covalent';
-
   const provider = getCurrencyProvider({
-    provider: cryptoProvider,
+    chain: network.chain,
   });
 
   return provider.getAddressCurrencies({ address, network });
@@ -55,9 +52,7 @@ export const getAddressNFTs = async ({
   address: string;
   network: CryptoNetwork;
 }): Promise<NFT[]> => {
-  const provider = getNFTProvider({
-    provider: 'alchemy',
-  });
+  const provider = getNFTProvider();
 
   return provider.getAddressNFTs({ address, network });
 };

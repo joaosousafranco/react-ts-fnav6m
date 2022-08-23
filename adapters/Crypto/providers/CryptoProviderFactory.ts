@@ -1,3 +1,4 @@
+import { CryptoChain } from '../../../domain/models/CryptoNetwork';
 import { Alchemy } from '../../Crypto/providers/Alchemy';
 import { Covalent } from '../../Crypto/providers/Covalent';
 import {
@@ -6,34 +7,23 @@ import {
 } from '../../Crypto/providers/CryptoProvider';
 import { MempoolSpace } from '../../Crypto/providers/MempoolSpace';
 
-export type SupportedProviders = 'covalent' | 'alchemy' | 'mempoolspace';
-
-export const getNFTProvider = ({
-  provider,
-}: {
-  provider: SupportedProviders;
-}): NFTProvider => {
-  switch (provider) {
-    case 'alchemy':
-      return new Alchemy();
-    default:
-      throw new Error(`NFT provider ${provider} implementation does not exist`);
-  }
+export const getNFTProvider = (): NFTProvider => {
+  return new Alchemy();
 };
 
 export const getCurrencyProvider = ({
-  provider,
+  chain,
 }: {
-  provider: SupportedProviders;
+  chain: CryptoChain;
 }): CurrencyProvider => {
-  switch (provider) {
-    case 'covalent':
+  switch (chain) {
+    case CryptoChain.ETH:
       return new Covalent();
-    case 'mempoolspace':
+    case CryptoChain.BTC:
       return new MempoolSpace();
     default:
       throw new Error(
-        `Crypto currency provider ${provider} implementation does not exist`
+        `Crypto currency chain ${chain} implementation does not exist`
       );
   }
 };
