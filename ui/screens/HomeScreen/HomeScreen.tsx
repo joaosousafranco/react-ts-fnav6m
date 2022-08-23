@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { ToDo } from '../../../domain/models/ToDo';
 import './HomeScreen.style.css';
 import { Fibonnacci } from '../../components/Fibonnacci/Fibonnacci';
-import { useFetch } from '../../hooks/useFetch';
 import { useService } from '../../hooks/useService';
 import { getToDos } from '../../../domain/services/TodoService';
 
