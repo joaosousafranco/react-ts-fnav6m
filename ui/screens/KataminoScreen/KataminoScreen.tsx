@@ -29,17 +29,20 @@ export const KataminoScreen = () => {
   // }, [currentPentamino]);
 
   React.useEffect(() => {
-    const originPoint = [1, 1];
+    const originPoint = [0, 9];
+    const rotationPoint = [2, 1];
+    const pentamino = pentaminos[11];
     const newBoard = buildBoard();
 
-    const rotatedPentamino = rotatePentamino(pentaminos[0], 90);
+    const rotatedPentamino = rotatePentamino(pentamino, -90);
 
-    console.log(JSON.stringify(pentaminos[0].cells));
+    console.log(JSON.stringify(pentamino.cells));
     // [{"x":1,"y":1},{"x":1,"y":2},{"x":1,"y":3},{"x":1,"y":4},{"x":2,"y":4}]
     // [{"x":1,"y":1},{"x":2,"y":1},{"x":3,"y":1},{"x":4,"y":1},{"x":4,"y":0}]
     console.log(JSON.stringify(rotatedPentamino.cells));
 
-    drawPentamino(originPoint, rotatedPentamino, newBoard);
+    drawPentamino(originPoint, pentamino, newBoard);
+    drawPentamino(rotationPoint, rotatedPentamino, newBoard);
 
     setBoard(newBoard);
   }, []);

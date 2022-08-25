@@ -37,7 +37,7 @@ export const drawPentamino = (
   const [originX, originY] = origin;
 
   pentamino.cells.forEach((cell) => {
-    const boardCell = board[cell.y + originX][cell.x + originY];
+    const boardCell = board[cell.y + originX]?.[cell.x + originY];
     if (boardCell) {
       boardCell.color = pentamino.color;
     }
@@ -54,6 +54,8 @@ export const rotatePentamino = (
   const newCells = pentamino.cells.map((cell): PentaminoCell => {
     const x = Math.round(cell.x * cos - cell.y * sin) + pentamino.cells[0].x;
     const y = Math.round(cell.y * cos + cell.x * sin) + pentamino.cells[0].y;
+
+    console.log([x, y]);
 
     return {
       x,
