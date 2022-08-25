@@ -30,28 +30,30 @@ export const buildBoard = () => {
 };
 
 export const drawPentamino = (
-  point: number[],
+  origin: number[],
   pentamino: Pentamino,
   board: KataminoBoard
 ) => {
+  const [originX, originY] = origin;
+
   pentamino.cells.forEach((cell) => {
-    board[cell.y + point[0]][cell.x + point[1]].color = pentamino.color;
+    const boardCell = board[cell.y + originX][cell.x + originY];
+    if (boardCell) {
+      boardCell.color = pentamino.color;
+    }
   });
 };
 
 export const rotatePentamino = (
-  origin: number[],
   pentamino: Pentamino,
   angle: number
 ): Pentamino => {
-  const originX = origin[0];
-  const originY = origin[1];
   const sin = Math.sin(angle);
   const cos = Math.cos(angle);
 
   const newCells = pentamino.cells.map((cell): PentaminoCell => {
-    const x = Math.round(cell.x * cos - cell.y * sin) + originX;
-    const y = Math.round(cell.y * cos + cell.x * sin) + originY;
+    const x = Math.round(cell.x * cos - cell.y * sin) + pentamino.cells[0].x;
+    const y = Math.round(cell.y * cos + cell.x * sin) + pentamino.cells[0].y;
 
     return {
       x,
