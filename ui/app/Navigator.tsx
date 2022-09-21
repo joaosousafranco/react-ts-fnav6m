@@ -10,14 +10,14 @@ import './Navigator.style';
 export const Navigator = () => (
   <BrowserRouter>
     <nav>
-      <Link to="/">Home</Link>
+      {/* <Link to="/">Home</Link> */}
       <Link to="/web3">Web3</Link>
-      <Link to="/katamino">Katamino</Link>
+      {/* <Link to="/katamino">Katamino</Link> */}
     </nav>
     <Routes>
       <Route path="/katamino" element={<KataminoScreen />} />
       <Route path="/web3" element={<Web3Screen />} />
-      <Route path="*" element={<HomeScreen />} />
+      <Route path="*" element={<Web3Screen />} />
     </Routes>
   </BrowserRouter>
 );
