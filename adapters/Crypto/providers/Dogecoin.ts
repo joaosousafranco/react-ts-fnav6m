@@ -14,6 +14,7 @@ const NETWORKS_BASE_URL_MAP = {
 type DogecoinBalance = {
   address: string;
   final_balance: number;
+  error?: string;
 };
 
 export class Dogecoin implements CurrencyProvider {
@@ -30,7 +31,7 @@ export class Dogecoin implements CurrencyProvider {
       }/main/addrs/${address}?token=3e67c4622635454eaf942b83bff6b369`,
     });
 
-    if (error) {
+    if (error || body.error) {
       throw error;
     }
 
@@ -39,7 +40,7 @@ export class Dogecoin implements CurrencyProvider {
         name: 'Dogecoin',
         symbol: 'Ɖ',
         balance: new BigNumber(body.final_balance)
-          .dividedBy(100000000)
+          .dividedBy(Math.pow(10, 8))
           .toString(),
         logo: DOGE_LOGO,
       },
