@@ -1,6 +1,7 @@
 export enum CryptoChain {
   ETH = 'ethereum',
   BTC = 'bitcoin',
+  DOGE = 'dogecoin',
 }
 
 export type CryptoNetwork = {

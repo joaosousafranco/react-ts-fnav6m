@@ -8,6 +8,7 @@ import {
   CurrencyProvider,
   NFTProvider,
 } from '../../Crypto/providers/CryptoProvider';
+import { Dogecoin } from '../../Crypto/providers/Dogecoin';
 import { MempoolSpace } from '../../Crypto/providers/MempoolSpace';
 
 export const supportedNetworks: CryptoNetwork[] = [
@@ -33,6 +34,11 @@ export const supportedNetworks: CryptoNetwork[] = [
     description: 'BTC Testnet',
     chain: CryptoChain.BTC,
   },
+  {
+    name: 'dogecoin-mainnet',
+    description: 'Dogecoin Mainnet',
+    chain: CryptoChain.DOGE,
+  },
 ];
 
 export const getNFTProvider = (): NFTProvider => {
@@ -49,6 +55,8 @@ export const getCurrencyProvider = ({
       return new Covalent();
     case CryptoChain.BTC:
       return new MempoolSpace();
+    case CryptoChain.DOGE:
+      return new Dogecoin();
     default:
       throw new Error(
         `Crypto currency chain ${chain} implementation does not exist`
