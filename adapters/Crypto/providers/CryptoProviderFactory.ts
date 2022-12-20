@@ -25,16 +25,16 @@ export const supportedNetworks: CryptoNetwork[] = [
     chain: CryptoChain.ETH,
   },
   {
-    id: '43',
+    id: '137',
     name: 'polygon-mainnet',
     description: 'Polygon Mainnet',
-    chain: CryptoChain.ETH,
+    chain: CryptoChain.MATIC,
   },
   {
-    id: '44',
+    id: '80001',
     name: 'polygon-mumbai',
     description: 'Polygon Mumbai',
-    chain: CryptoChain.ETH,
+    chain: CryptoChain.MATIC,
   },
   {
     name: 'btc-mainnet',
@@ -53,8 +53,18 @@ export const supportedNetworks: CryptoNetwork[] = [
   },
 ];
 
-export const getNFTProvider = (): NFTProvider => {
-  return new Alchemy();
+export const getNFTProvider = ({
+  chain,
+}: {
+  chain: CryptoChain;
+}): NFTProvider => {
+  switch (chain) {
+    case CryptoChain.ETH:
+    case CryptoChain.MATIC:
+      return new Alchemy();
+    default:
+      throw new Error(`NFT chain ${chain} implementation does not exist`);
+  }
 };
 
 export const getCurrencyProvider = ({
@@ -64,6 +74,7 @@ export const getCurrencyProvider = ({
 }): CurrencyProvider => {
   switch (chain) {
     case CryptoChain.ETH:
+    case CryptoChain.MATIC:
       return new Covalent();
     case CryptoChain.BTC:
       return new MempoolSpace();

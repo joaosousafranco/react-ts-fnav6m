@@ -14,3 +14,10 @@
   border: 1px solid black;
   box-shadow: 0 5px 10px;
 }
+
+.nft video {
+  width: 150px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  box-shadow: 0 5px 10px;
+}

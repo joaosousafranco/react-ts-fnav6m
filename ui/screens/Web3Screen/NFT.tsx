@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NFT as NFTModel } from '../../../domain/models/NFT';
-import { Image } from '../../components/Image';
+import { Asset } from '../../components/Asset';
 import cx from 'classnames';
 import './NFT.style';
 
@@ -10,11 +10,7 @@ type NFTProps = {
 
 export const NFT = ({ nft }: NFTProps) => (
   <div className={cx('nft')}>
-    <Image
-      title={nft.description}
-      src={nft.media[0]}
-      fallbackImage={nft.media[1]}
-    />
+    <Asset title={nft.description} src={nft.media[0]} />;
     <div>
       {nft.balance} - {nft.title}
     </div>

@@ -28,7 +28,9 @@ export const getAddressNFTs = async ({
   address: string;
   network: CryptoNetwork;
 }): Promise<NFT[]> => {
-  const provider = getNFTProvider();
+  const provider = getNFTProvider({
+    chain: network.chain,
+  });
 
   return provider.getAddressNFTs({ address, network });
 };

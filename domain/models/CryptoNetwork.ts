@@ -1,5 +1,6 @@
 export enum CryptoChain {
   ETH = 'ethereum',
+  MATIC = 'matic',
   BTC = 'bitcoin',
   DOGE = 'dogecoin',
 }

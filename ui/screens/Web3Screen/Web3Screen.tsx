@@ -14,7 +14,7 @@ import { LoadingTitle } from '../../components/LoadingTitle/LoadingTitle';
 import { useDebounce } from '../../hooks/useDebounce';
 import { getSupportedNetworks } from '../../../adapters/Crypto/CryptoAdapter';
 
-const INITIAL_ADDRESS = '0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b';
+const INITIAL_ADDRESS = '0xeDDa3B11Cfe272B8eaA3ED41eF254A8cEec0aa6E';
 // Address: 0xa49e906f1D52E1c215616f529490F232E22492bA
 // Private Key: 36e8e50c25bb1ce42977f227ad992f23afce8d3f2385018f7c73ec3ba2b576e8
 
