@@ -5,20 +5,33 @@ type BaseImageProps = React.DetailedHTMLProps<
   HTMLImageElement
 >;
 
-type AssetProps = BaseImageProps;
+type AssetProps = {
+  fallbackImage: string;
+} & BaseImageProps;
 
-export const Asset = ({ src, ...rest }: AssetProps) => {
-  const [imageUrl] = React.useState(src);
+export const Asset = ({ fallbackImage, src, ...rest }: AssetProps) => {
+  const [imageUrl, setImageUrl] = React.useState(src);
   const [isVideo, setIsVideo] = React.useState(false);
 
   const handleOnError = React.useCallback(() => {
-    if (!isVideo) {
+    if (!isVideo && imageUrl !== fallbackImage) {
       setIsVideo(true);
+    }
+
+    if (isVideo && fallbackImage) {
+      setIsVideo(false);
+      setImageUrl(fallbackImage);
     }
   }, [imageUrl]);
 
   return isVideo ? (
-    <video onError={handleOnError} src={imageUrl} autoPlay={true} />
+    <video
+      onError={handleOnError}
+      src={imageUrl}
+      autoPlay={true}
+      loop={true}
+      title={rest.title}
+    />
   ) : (
     <img onError={handleOnError} src={imageUrl} {...rest} />
   );

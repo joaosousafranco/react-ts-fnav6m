@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { CryptoCurrency } from '../../../domain/models/CryptoCurrency';
 import cx from 'classnames';
-import { Image } from '../../components/Image';
+import { Asset } from '../../components/Asset';
 import './Currency.style';
-import { AppContext } from '../../app/AppContext';
 import { Fiat } from '../../components/Fiat';
 
 type CurrencyProps = {
@@ -16,7 +15,7 @@ const LOGO_FALLBACK_IMAGE =
 export const Currency = ({ currency }: CurrencyProps) => (
   <div key={currency.symbol} className={cx('currency')}>
     <div className={cx('logo')}>
-      <Image src={currency.logo} fallbackImage={LOGO_FALLBACK_IMAGE} />
+      <Asset src={currency.logo} fallbackImage={LOGO_FALLBACK_IMAGE} />
     </div>
     <div className={cx('description')}>{currency.name}</div>
     <div className={cx('value')}>
