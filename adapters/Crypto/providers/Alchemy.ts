@@ -24,7 +24,7 @@ export class Alchemy implements NFTProvider {
     network: CryptoNetwork;
   }): Promise<NFT[]> {
     const { body, error } = await HttpAdapter.get<AlchemyNFTList>({
-      url: `https://${network.name}.alchemyapi.io/v2/${API_KEY}/getNFTs?owner=${address}`,
+      url: `https://${network.name}.g.alchemy.com/nft/v2/${API_KEY}/getNFTs?owner=${address}`,
     });
 
     if (error) {

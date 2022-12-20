@@ -25,6 +25,18 @@ export const supportedNetworks: CryptoNetwork[] = [
     chain: CryptoChain.ETH,
   },
   {
+    id: '43',
+    name: 'polygon-mainnet',
+    description: 'Polygon Mainnet',
+    chain: CryptoChain.ETH,
+  },
+  {
+    id: '44',
+    name: 'polygon-mumbai',
+    description: 'Polygon Mumbai',
+    chain: CryptoChain.ETH,
+  },
+  {
     name: 'btc-mainnet',
     description: 'BTC Mainnet',
     chain: CryptoChain.BTC,
