@@ -14,11 +14,11 @@ export const Asset = ({ fallbackImage, src, ...rest }: AssetProps) => {
   const [isVideo, setIsVideo] = React.useState(false);
 
   const handleOnError = React.useCallback(() => {
-    if (!isVideo && imageUrl !== fallbackImage) {
+    if (!isVideo) {
       setIsVideo(true);
     }
 
-    if (isVideo && fallbackImage) {
+    if (isVideo && imageUrl !== fallbackImage) {
       setIsVideo(false);
       setImageUrl(fallbackImage);
     }
