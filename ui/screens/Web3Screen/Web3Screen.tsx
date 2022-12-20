@@ -36,7 +36,7 @@ const INITIAL_ADDRESS = '0xeDDa3B11Cfe272B8eaA3ED41eF254A8cEec0aa6E';
 export const Web3Screen = () => {
   const [inputValue, setInputValue] = React.useState(INITIAL_ADDRESS);
   const [address, setAddress] = React.useState(INITIAL_ADDRESS);
-  const [selectedNetwork, setSelectedNetwork] = React.useState(1);
+  const [selectedNetwork, setSelectedNetwork] = React.useState(2);
 
   const supportedNetworks = React.useMemo(getSupportedNetworks, []);
 
