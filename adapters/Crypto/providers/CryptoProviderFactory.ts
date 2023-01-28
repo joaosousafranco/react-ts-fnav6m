@@ -19,7 +19,7 @@ export const supportedNetworks: CryptoNetwork[] = [
     chain: CryptoChain.ETH,
   },
   {
-    id: '42',
+    id: '5',
     name: 'eth-goerli',
     description: 'ETH Goerli',
     chain: CryptoChain.ETH,
