@@ -24,6 +24,30 @@ export const get = async <T, E = Error>({
   }
 };
 
+export const post = async <B, T, E = Error>({
+  url,
+  request: { body },
+}: {
+  url: string;
+  request: { body: B };
+}): Promise<HttpResponse<T, E>> => {
+  try {
+    const response = await fetch(url, {
+      method: 'post',
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+
+    return {
+      body: data,
+      statusCode: response.status,
+      headers: response.headers,
+    };
+  } catch (error) {
+    return { error, statusCode: -1 };
+  }
+};
+
 export const head = async <T, E = Error>({
   url,
 }: {
@@ -31,11 +55,6 @@ export const head = async <T, E = Error>({
 }): Promise<HttpResponse<T, E>> => {
   try {
     const response = await fetch(url, { method: 'HEAD' });
-
-    console.log('head', {
-      statusCode: response.status,
-      headers: response.headers,
-    });
 
     return {
       statusCode: response.status,

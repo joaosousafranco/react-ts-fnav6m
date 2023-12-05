@@ -6,10 +6,10 @@ import * as HttpAdapter from '../../HttpAdapter';
 type AlchemyNFTList = {
   totalCount: number;
   ownedNfts: {
-    title: string;
+    name: string;
     description: string;
     balance: string;
-    media: { [key: string]: string }[];
+    image: { cachedUrl: string };
   }[];
 };
 
@@ -24,7 +24,7 @@ export class Alchemy implements NFTProvider {
     network: CryptoNetwork;
   }): Promise<NFT[]> {
     const { body, error } = await HttpAdapter.get<AlchemyNFTList>({
-      url: `https://${network.name}.g.alchemy.com/nft/v2/${API_KEY}/getNFTs?owner=${address}`,
+      url: `https://${network.name}.g.alchemy.com/nft/v3/${API_KEY}/getNFTsForOwner?owner=${address}`,
     });
 
     if (error) {
@@ -32,15 +32,11 @@ export class Alchemy implements NFTProvider {
     }
 
     return (
-      body.ownedNfts.map(({ title, description, balance, media }) => ({
-        title,
+      body.ownedNfts.map(({ name, description, balance, image }) => ({
+        title: name,
         description,
         balance,
-        media: media.reduce(
-          (previous, current) =>
-            previous.concat(...Object.keys(current).map((key) => current[key])),
-          []
-        ),
+        media: [image.cachedUrl],
       })) || []
     );
   }
