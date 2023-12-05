@@ -36,8 +36,6 @@ export class Covalent implements CurrencyProvider {
       throw error;
     }
 
-    console.log(body);
-
     return (
       body?.data?.items?.map((item) => ({
         name: item.contract_name,
@@ -49,7 +47,7 @@ export class Covalent implements CurrencyProvider {
         logo: item.logo_url,
         fiat: {
           currency: body.data.quote_currency,
-          value: new BigNumber(item.quote).toString(),
+          value: new BigNumber(item.quote || 0).toString(),
         },
       })) || []
     );
