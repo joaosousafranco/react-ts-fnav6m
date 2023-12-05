@@ -33,6 +33,7 @@ const INITIAL_ADDRESS = '0xf2418164a76F676d792039cfDF720DB5C3768490';
 
 // Some useful doge addresses
 // D7AqbQgbxGB9Q29AKv4zfdchouMUFuKVYB - mainnet
+// DDz1H7AcqPgmKzFEP3pBHW5b1GWuWEoAAP - whale
 
 export const Web3Screen = () => {
   const [inputValue, setInputValue] = React.useState(INITIAL_ADDRESS);
