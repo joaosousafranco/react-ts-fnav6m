@@ -36,6 +36,8 @@ export class Covalent implements CurrencyProvider {
       throw error;
     }
 
+    console.log(body);
+
     return (
       body?.data?.items?.map((item) => ({
         name: item.contract_name,
