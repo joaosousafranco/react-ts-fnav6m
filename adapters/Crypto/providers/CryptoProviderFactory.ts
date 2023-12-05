@@ -25,6 +25,12 @@ export const supportedNetworks: CryptoNetwork[] = [
     chain: CryptoChain.ETH,
   },
   {
+    id: '11155111',
+    name: 'eth-sepolia',
+    description: 'ETH Sepolia',
+    chain: CryptoChain.ETH,
+  },
+  {
     id: '137',
     name: 'polygon-mainnet',
     description: 'Polygon Mainnet',

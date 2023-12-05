@@ -25,6 +25,7 @@ const INITIAL_ADDRESS = '0xeDDa3B11Cfe272B8eaA3ED41eF254A8cEec0aa6E';
 // 0xE603eB00619E81d8b4954be13B59D7B6A2DC2B75
 // 0x4bAf012726CB5EC7Dda57Bc2770798A38100C44d - whale
 // 0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca - whale
+// 0xf2418164a76F676d792039cfDF720DB5C3768490 - Sepolia
 
 // Some useful bitcoin addresses
 // mrPnD3hrbJZCMyr2bxoRoumitXLSNvj23V - testnet
