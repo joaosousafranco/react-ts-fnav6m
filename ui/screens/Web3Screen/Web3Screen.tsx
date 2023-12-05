@@ -15,8 +15,6 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { getSupportedNetworks } from '../../../adapters/Crypto/CryptoAdapter';
 
 const INITIAL_ADDRESS = '0x00000000219ab540356cBB839Cbe05303d7705Fa';
-// Address: 0xa49e906f1D52E1c215616f529490F232E22492bA
-// Private Key: 36e8e50c25bb1ce42977f227ad992f23afce8d3f2385018f7c73ec3ba2b576e8
 
 // Some useful ethereum addresses
 // 0x00000000219ab540356cBB839Cbe05303d7705Fa
